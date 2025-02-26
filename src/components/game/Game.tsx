@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Cell, GameStats, Stat } from "../../model";
+import { Cell, Stat } from "../../model";
 import { NAV_KEYS, DEFAULT_VALUES, GAME_STATS } from "../../constants";
 import { checkValidity, getUserStats } from "../../helper";
 import InfoBar from "../infoBar/InfoBar";
