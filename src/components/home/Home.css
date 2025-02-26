@@ -1,17 +1,20 @@
 .wrapper {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .btn-box {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 80vh;
+  /* height: 80vh; */
   /* justify-content: center; */
   align-items: center;
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .btn {
@@ -20,6 +23,11 @@
   padding: 10px;
   width: 100%;
   cursor: pointer;
+}
+
+.btn:hover {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+
 }
 
 .btn-easy {

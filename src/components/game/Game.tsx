@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Cell, GameStats, Stat } from "../../model";
 import { NAV_KEYS, DEFAULT_VALUES, GAME_STATS } from "../../constants";
-import { checkValidity } from "../../data";
+import { checkValidity, getUserStats } from "../../helper";
 import InfoBar from "../infoBar/InfoBar";
 import "./Game.css";
 
@@ -60,12 +60,7 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
     setGrid(checkedGrid);
     if (complete) {
       if (level) {
-        let gameStats: GameStats = {};
-        const st = localStorage.getItem(GAME_STATS) || '';
-        if (st) {
-          gameStats = JSON.parse(st)
-        }
-        if (!gameStats[level]) gameStats[level] = [];
+        const gameStats = getUserStats();
         const obj: Stat = {
           date: new Date().toLocaleDateString(),
           difficulty: level,

@@ -2,23 +2,26 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: -10px;
+  position: relative;
 }
 
 .level {
   padding: 3px;
-  border-radius: 5%;
   padding: 1px 10px;
   font-weight: bold;
 }
 
 .time {
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-size: larger;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 
 .close {
   border: 1px solid black;
-  border-radius: 5%;
   padding: 1px 10px;
   background-color: red;
   padding: 1px 10px;

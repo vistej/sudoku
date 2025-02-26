@@ -1,4 +1,4 @@
-import { formatElapsedTime } from "../../data";
+import { formatElapsedTime } from "../../helper";
 import "./InfoBar.css";
 
 interface InfoBarProps {
@@ -13,7 +13,7 @@ const InfoBar = ({ level, elapsedTime, exit }: InfoBarProps) => {
   return <div className="info-bar">
     <p className={`level btn-${level?.toLowerCase()}`}>{level}</p>
     <p className="time">{formatElapsedTime(elapsedTime)}</p>
-    <p className="close" onClick={exit}>Exit</p>
+    <p className="close" onClick={exit}>Exit Game</p>
   </div>
 }
 

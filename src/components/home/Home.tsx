@@ -1,4 +1,5 @@
 import { DIFFICULTY } from '../../constants';
+import Stats from '../stats/Stats';
 import './Home.css'
 
 const Home = ({ createGame }: { createGame: (x: string) => void }) => {
@@ -10,6 +11,8 @@ const Home = ({ createGame }: { createGame: (x: string) => void }) => {
       <button className="btn btn-medium" onClick={() => createGame(DIFFICULTY.MEDIUM)}>Medium</button>
       <button className="btn btn-hard" onClick={() => createGame(DIFFICULTY.HARD)}>Hard</button>
     </div>
+
+    <Stats />
   </div>
 }
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Cell } from "./model";
 import './App.css'
-import { generateData } from "./data";
+import { generateData } from "./helper";
 import Dialog from "./components/dialog/dialog";
 import ReactConfetti from "react-confetti";
 import Footer from "./components/footer/Footer";

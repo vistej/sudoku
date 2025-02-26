@@ -1,5 +1,5 @@
-import { DEFAULT_VALUES, DIFFICULTY } from './constants';
-import { Cell } from './model';
+import { DEFAULT_VALUES, DIFFICULTY, GAME_STATS } from './constants';
+import { Cell, GameStats } from './model';
 
 const shuffleArray = (array: string[]) => array.sort(() => Math.random() - 0.5);
 const getCommonValues = (
@@ -151,11 +151,24 @@ export const checkValidity = (grid: Cell[][]): [Cell[][], boolean] => {
 };
 
 export const formatElapsedTime = (milliseconds: number | null) => {
-  if (!milliseconds) return '00:00';
+  if (!milliseconds) return '00 : 00';
   const totalSeconds = Math.floor(milliseconds / 1000);
   const minutes = Math.floor(totalSeconds / 60)
     .toString()
     .padStart(2, '0');
   const seconds = (totalSeconds % 60).toString().padStart(2, '0');
-  return `${minutes}:${seconds}`;
+  return `${minutes} : ${seconds}`;
+};
+
+export const getUserStats = () => {
+  let gameStats: GameStats = {};
+  const st = localStorage.getItem(GAME_STATS) || '';
+  if (st) {
+    gameStats = JSON.parse(st);
+  }
+  if (!gameStats[DIFFICULTY.EASY]) gameStats[DIFFICULTY.EASY] = [];
+  if (!gameStats[DIFFICULTY.MEDIUM]) gameStats[DIFFICULTY.MEDIUM] = [];
+  if (!gameStats[DIFFICULTY.HARD]) gameStats[DIFFICULTY.HARD] = [];
+
+  return gameStats;
 };
