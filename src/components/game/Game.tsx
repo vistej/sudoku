@@ -39,7 +39,7 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
     return className.join(' ');
   }
 
-  const onKeyChange = (i: number, j: number, e: KeyboardEvent, obj: Cell) => {
+  const onKeyChange = (i: number, j: number, e: React.KeyboardEvent<HTMLDivElement>, obj: Cell) => {
     e.preventDefault();
     if (Object.keys(NAV_KEYS).includes(e.key)) {
       navigate(i, j, e.key);
