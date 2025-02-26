@@ -94,7 +94,7 @@ export const generateData = (difficulty = DIFFICULTY.EASY) => {
 };
 
 const pickRandom = (points: string[], difficulty = DIFFICULTY.EASY) => {
-  let limit = 79;
+  let limit = 40;
   if (difficulty === DIFFICULTY.MEDIUM) limit = 30;
   if (difficulty === DIFFICULTY.HARD) limit = 25;
   const res = new Set();
@@ -148,4 +148,14 @@ export const checkValidity = (grid: Cell[][]): [Cell[][], boolean] => {
     }
   }
   return [newGrid, count === 81 && !hasErrors];
+};
+
+export const formatElapsedTime = (milliseconds: number | null) => {
+  if (!milliseconds) return '00:00';
+  const totalSeconds = Math.floor(milliseconds / 1000);
+  const minutes = Math.floor(totalSeconds / 60)
+    .toString()
+    .padStart(2, '0');
+  const seconds = (totalSeconds % 60).toString().padStart(2, '0');
+  return `${minutes}:${seconds}`;
 };

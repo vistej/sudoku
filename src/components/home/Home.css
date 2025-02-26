@@ -1,0 +1,38 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 80vh;
+  /* justify-content: center; */
+  align-items: center;
+  width: 500px;
+}
+
+.btn {
+  font-size: large;
+  font-weight: bold;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.btn-easy {
+  background-color: #22C55E;
+  color: white;
+}
+
+.btn-medium {
+  background-color: #FACC15;
+  color: black;
+}
+
+.btn-hard {
+  background-color: #DC2626;
+  color: white;
+}

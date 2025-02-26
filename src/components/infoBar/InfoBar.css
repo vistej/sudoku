@@ -1,0 +1,30 @@
+.info-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -10px;
+}
+
+.level {
+  padding: 3px;
+  border-radius: 5%;
+  padding: 1px 10px;
+  font-weight: bold;
+}
+
+.time {
+  font-weight: bold;
+}
+
+
+.close {
+  border: 1px solid black;
+  border-radius: 5%;
+  padding: 1px 10px;
+  background-color: red;
+  padding: 1px 10px;
+  color: white;
+  font-weight: bold;
+}
+.close:hover {
+  cursor: pointer;
+}

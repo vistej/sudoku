@@ -1,0 +1,56 @@
+.box-row {
+  display: flex;
+  width: 100%;
+}
+
+
+.input-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  aspect-ratio: 1;
+  box-shadow: inset -2px -2px 0 rgba(211, 211, 211, 0.5);
+  font-size: clamp(16px, 5vw, 40px);
+  font-weight: bold;
+  outline: none;
+  user-select: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.blocked {
+  background-color: rgba(211, 211, 211, 0.5);
+  color: #2D3748;
+
+}
+.same {
+  background-color: lightblue;
+}
+
+.error {
+  color: #DC2626;
+}
+.user-box {
+  color: #3B82F6;
+}
+
+
+.input-box:focus {
+  background-color: lightblue;
+}
+
+.input-box:nth-child(1) {
+  border-left: 2px solid black;
+}
+
+.input-box:nth-child(3n) {
+  border-right: 2px solid black;
+}
+
+.box-row:nth-child(3n) {
+  border-bottom: 2px solid black;
+}
+.box-row:nth-child(1) {
+  border-top: 2px solid black;
+}

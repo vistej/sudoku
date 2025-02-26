@@ -22,3 +22,5 @@ export const DIFFICULTY = {
   MEDIUM: 'Medium',
   HARD: 'Hard',
 };
+
+export const GAME_STATS = 'GAME_STATS';
