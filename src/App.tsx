@@ -12,7 +12,7 @@ import Game from "./components/game/Game";
 function App() {
   const [grid, setGrid] = useState<Cell[][]>([]);
   const [level, setLevel] = useState<string | null>(null);
-  const [success, setSuccess] = useState<boolean>(true);
+  const [success, setSuccess] = useState<boolean>(false);
 
 
   const createGame = (difficulty: string) => {
