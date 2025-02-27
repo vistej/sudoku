@@ -3,6 +3,8 @@ import {
   DIFFICULTY,
   GAME_STATS,
   NUM_COUNTS,
+  THEME,
+  THEMES,
 } from './constants';
 import { Cell, GameStats, NumCount } from './model';
 
@@ -180,5 +182,13 @@ export const getUserStats = () => {
   if (!gameStats[DIFFICULTY.MEDIUM]) gameStats[DIFFICULTY.MEDIUM] = [];
   if (!gameStats[DIFFICULTY.HARD]) gameStats[DIFFICULTY.HARD] = [];
 
+  localStorage.setItem(GAME_STATS, JSON.stringify(gameStats));
+
   return gameStats;
+};
+
+export const getTheme = () => {
+  const theme = localStorage.getItem(THEME) || THEMES.Light;
+  localStorage.setItem(THEME, theme);
+  return theme;
 };

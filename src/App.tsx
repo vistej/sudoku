@@ -12,7 +12,7 @@ import Game from "./components/game/Game";
 function App() {
   const [grid, setGrid] = useState<Cell[][]>([]);
   const [level, setLevel] = useState<string | null>(null);
-  const [success, setSuccess] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(true);
 
 
   const createGame = (difficulty: string) => {
@@ -44,7 +44,7 @@ function App() {
       {
         success && <>
           <ReactConfetti />
-          <Dialog open={true} onClose={reset} />
+          <Dialog open={success} onClose={reset} />
         </>
       }
 

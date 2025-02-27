@@ -17,11 +17,12 @@
   outline: none;
   user-select: none;
   font-family: Arial, Helvetica, sans-serif;
+  color: var(--txt-color);
 }
 
 .blocked {
   background-color: rgba(211, 211, 211, 0.5);
-  color: #2D3748;
+  color: var(--txt-color)
 
 }
 .same {
@@ -32,7 +33,7 @@
   color: #DC2626;
 }
 .user-box {
-  color: #3B82F6;
+  color: var(--num-key-color);
 }
 
 
@@ -41,16 +42,16 @@
 }
 
 .input-box:nth-child(1) {
-  border-left: 2px solid black;
+  border-left: 2px solid var(--txt-color);
 }
 
 .input-box:nth-child(3n) {
-  border-right: 2px solid black;
+  border-right: 2px solid var(--txt-color);
 }
 
 .box-row:nth-child(3n) {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid var(--txt-color);
 }
 .box-row:nth-child(1) {
-  border-top: 2px solid black;
+  border-top: 2px solid var(--txt-color);
 }

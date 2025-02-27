@@ -26,6 +26,12 @@ export const DIFFICULTY = {
 };
 
 export const GAME_STATS = 'GAME_STATS';
+export const THEME = 'THEME';
+
+export const THEMES: { [key: string]: string } = {
+  Dark: 'Dark',
+  Light: 'Light',
+};
 
 export const NUM_COUNTS: NumCount = {
   '1': 0,

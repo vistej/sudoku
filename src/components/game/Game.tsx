@@ -18,7 +18,7 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
   const boxRefs = useRef<{ [key: string]: HTMLDivElement }>({});
   const [startTime] = useState(new Date().getTime());
   const [numCounts, setNumCounts] = useState<NumCount>(NUM_COUNTS);
-  const [currentBox, setCurrentBox] = useState<string>('');
+  const [currentBox, setCurrentBox] = useState<string>('0-0');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,7 +28,13 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
     if (startTime === null && interval) clearInterval(interval)
 
     return () => clearInterval(interval);
-  }, [startTime])
+  }, [startTime]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyChange);
+
+    return () => window.removeEventListener('keydown', onKeyChange);
+  })
 
   const getBoxClassName = (obj: Cell) => {
     const className = ['input-box'];
@@ -44,11 +50,12 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
     return className.join(' ');
   }
 
-  const onKeyChange = (i: number, j: number, e: React.KeyboardEvent<HTMLDivElement>, obj: Cell) => {
+  const onKeyChange = (e: KeyboardEvent) => {
     e.preventDefault();
+    const [i, j] = currentBox.split('-').map(Number);
     if (Object.keys(NAV_KEYS).includes(e.key)) {
       navigate(i, j, e.key);
-    } else if (!obj.default) {
+    } else {
       if (DEFAULT_VALUES.has(e.key)) {
         updateGrid(i, j, e.key);
       } else if (e.key === 'Delete' || e.key === 'Backspace') {
@@ -83,7 +90,7 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
 
 
   const navigate = (i: number, j: number, key: string) => {
-    let id = '';
+    let id = currentBox;
     switch (key) {
       case NAV_KEYS.ArrowUp:
         if (i > 0) {
@@ -109,19 +116,18 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
         break;
     }
     setCurrentBox(id);
-    boxRefs.current[id].focus();
   };
 
   const updateFromNumpad = (num: string) => {
-    const [x, y] = currentBox.split('-');
+    const [x, y] = currentBox.split('-').map(Number);
 
-    updateGrid(Number(x), Number(y), num);
-    boxRefs.current[currentBox].focus();
+    updateGrid(x, y, num);
   }
 
   const onExit = () => {
     setCurrentBox('');
     setElapsedTime(null);
+    setNumCounts(NUM_COUNTS);
     reset();
   }
 
@@ -140,12 +146,10 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
                   boxRefs.current[`${i}-${j}`] = el;
                 }
               }}
-              onKeyDown={(e) => onKeyChange(i, j, e, obj)}
               onClick={(e) => {
                 e.preventDefault();
                 setCurrentBox(`${i}-${j}`);
               }}
-              onBlur={() => setTimeout(() => boxRefs.current[currentBox]?.focus(), 0)}
             >
               {obj.value}
             </div>

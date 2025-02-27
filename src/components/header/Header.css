@@ -1,12 +1,24 @@
 .header {
   display: flex;
   justify-content: center;
+  align-items: center;
   border-bottom: 2px solid black;
+  position: relative;
 }
 
 .title {
   font-size: xx-large;
   font-weight: bold;
-  color: blueviolet;
+  color: var(--num-key-color);
   margin: 10px 0;
+}
+
+.theme {
+  position: absolute;
+  right: 0;
+  font-size: 40px;
+  background-color: transparent;
+  border: none;
+  padding: 0 10px;
+  cursor: pointer;
 }
