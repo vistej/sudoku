@@ -1,0 +1,22 @@
+.numpad {
+  display: flex;
+  justify-content: space-between;
+}
+
+.numkey {
+  padding: 10px;
+  aspect-ratio: 1;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+  font-weight: bold;
+  color: blue;
+}
+.active:hover {
+  cursor: pointer;
+}
+.disabled {
+  color: cyan;
+}

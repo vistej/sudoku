@@ -1,5 +1,10 @@
-import { DEFAULT_VALUES, DIFFICULTY, GAME_STATS } from './constants';
-import { Cell, GameStats } from './model';
+import {
+  DEFAULT_VALUES,
+  DIFFICULTY,
+  GAME_STATS,
+  NUM_COUNTS,
+} from './constants';
+import { Cell, GameStats, NumCount } from './model';
 
 const shuffleArray = (array: string[]) => array.sort(() => Math.random() - 0.5);
 const getCommonValues = (
@@ -106,17 +111,22 @@ const pickRandom = (points: string[], difficulty = DIFFICULTY.EASY) => {
   return res;
 };
 
-export const checkValidity = (grid: Cell[][]): [Cell[][], boolean] => {
+export const checkValidity = (
+  grid: Cell[][]
+): [Cell[][], boolean, NumCount] => {
   const newGrid = [...grid];
   const rows = new Map();
   const cols = new Map();
   const squares = new Map();
   let count = 0;
   let hasErrors = false;
+  const numCounts = { ...NUM_COUNTS };
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
-      if (grid[i][j].value) {
+      const val = grid[i][j].value;
+      if (val) {
         count++;
+        numCounts[val]++;
         const key = `${Math.floor(i / 3)}-${Math.floor(j / 3)}`;
         if (!rows.has(i)) rows.set(i, new Map());
         if (!cols.has(j)) cols.set(j, new Map());
@@ -147,7 +157,7 @@ export const checkValidity = (grid: Cell[][]): [Cell[][], boolean] => {
       }
     }
   }
-  return [newGrid, count === 81 && !hasErrors];
+  return [newGrid, count === 81 && !hasErrors, numCounts];
 };
 
 export const formatElapsedTime = (milliseconds: number | null) => {

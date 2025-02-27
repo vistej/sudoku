@@ -14,3 +14,7 @@ export interface Stat {
 export interface GameStats {
   [key: string]: Stat[];
 }
+
+export interface NumCount {
+  [key: string]: number;
+}
