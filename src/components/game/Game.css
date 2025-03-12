@@ -13,7 +13,6 @@
   aspect-ratio: 1;
   box-shadow: inset -2px -2px 0 rgba(211, 211, 211, 0.5);
   font-size: clamp(16px, 5vw, 40px);
-  font-weight: bold;
   outline: none;
   user-select: none;
   font-family: Arial, Helvetica, sans-serif;
@@ -26,7 +25,12 @@
 
 }
 .same {
+  background-color: #A7C7E7;
+}
+
+.same-axis {
   background-color: lightblue;
+  ;
 }
 
 .error {
@@ -38,7 +42,7 @@
 
 
 .input-box-focus {
-  background-color: lightblue;
+  background-color: #A7C7E7;
 }
 
 .input-box:nth-child(1) {

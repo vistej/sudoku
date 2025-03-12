@@ -10,8 +10,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: x-large;
-  font-weight: bold;
+  font-size: 35px;
+  margin: 0;
+  /* font-weight: bold; */
   color: var(--num-key-color);
 }
 .active:hover {

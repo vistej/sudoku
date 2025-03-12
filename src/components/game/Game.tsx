@@ -37,6 +37,8 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
   })
 
   const getBoxClassName = (obj: Cell) => {
+    const [i, j] = currentBox.split('-');
+    const [x, y] = obj.position.split('-');
     const className = ['input-box'];
     if (obj.default) className.push('blocked');
     else {
@@ -44,6 +46,7 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
       if (obj.error) className.push('error');
       else className.push('user-box')
     }
+    if (i === x || j === y) className.push('same-axis');
     const currentVal = boxRefs.current[currentBox]?.textContent;
 
     if (obj.value && obj.value === currentVal) className.push('same')
