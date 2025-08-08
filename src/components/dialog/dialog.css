@@ -1,11 +1,122 @@
 .overlay {
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dialog {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.dialog::before {
+  content: '';
   position: absolute;
-  height: 100%;
-  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--success), #059669, var(--success));
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+}
+
+.dialog h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.025em;
+}
+
+.dialog div {
   display: flex;
   justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
+  gap: 1rem;
+}
+
+.dialog .btn {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, var(--success), #059669);
+  color: white;
+}
+
+.dialog .btn:hover {
+  background: linear-gradient(135deg, #059669, var(--success));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.dialog .btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .dialog {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .dialog h1 {
+    font-size: 1.5rem;
+  }
+  
+  .dialog .btn {
+    font-size: 0.875rem;
+    padding: 0.625rem 1.25rem;
+  }
 }

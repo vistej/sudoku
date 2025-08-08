@@ -136,32 +136,34 @@ const Game = ({ grid, level, setGrid, setSuccess, reset }: GameProps) => {
 
   return <>
     <InfoBar elapsedTime={elapsedTime} level={level} exit={onExit} />
-    <div>
-      {grid.map((row, i) => (
-        <div className='box-row' key={i}>
-          {row.map((obj, j) => (
-            <div
-              tabIndex={Number(`${i}${j}`)}
-              key={j}
-              className={getBoxClassName(obj)}
-              ref={(el) => {
-                if (el) {
-                  boxRefs.current[`${i}-${j}`] = el;
-                }
-              }}
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrentBox(`${i}-${j}`);
-              }}
-            >
-              {obj.value}
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
+    <div className="game-container">
+      <div className="game-board">
+        {grid.map((row, i) => (
+          <div className='box-row' key={i}>
+            {row.map((obj, j) => (
+              <div
+                tabIndex={Number(`${i}${j}`)}
+                key={j}
+                className={getBoxClassName(obj)}
+                ref={(el) => {
+                  if (el) {
+                    boxRefs.current[`${i}-${j}`] = el;
+                  }
+                }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCurrentBox(`${i}-${j}`);
+                }}
+              >
+                {obj.value}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
 
-    <NumPad numCounts={numCounts} onClick={(num: string) => updateFromNumpad(num)} />
+      <NumPad numCounts={numCounts} onClick={(num: string) => updateFromNumpad(num)} />
+    </div>
   </>
 }
 
