@@ -137,15 +137,6 @@ The game uses a modern design system with:
 - **CSS3** - Modern styling with custom properties and animations
 - **Local Storage** - Client-side data persistence
 
-## 🚀 **Deployment**
-
-The game is automatically deployed to GitHub Pages:
-
-```bash
-npm run build        # Build the project
-npm run deploy       # Deploy to GitHub Pages
-```
-
 ## 🤝 **Contributing**
 
 Contributions are welcome! Please feel free to submit a Pull Request.
